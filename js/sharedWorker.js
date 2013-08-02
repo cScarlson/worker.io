@@ -7,9 +7,10 @@ $hive(function(hive, port, ports, event){
     hive.emit('custom', 'You LOVE turtles...');
   });
   
-  hive.on('broadcast', function(e){
-    port.postMessage('???');
-    //hive.emit('broadcast', e.data);
+  hive.emit('broadcast', 'well hey there');
+  
+  hive.on('newEvent', function(e){
+    hive.emit('broadcast', e.data);
   });
   
 }).load('/lib/fakeLib.js');
